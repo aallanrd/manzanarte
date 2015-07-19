@@ -55,7 +55,9 @@
     <div class="row container">
       <h4 class="light">Rellena este formulario para obtener tus manzanas . Animate!</h4>
 
-        <?php include 'db.php'; ?>
+
+
+            <?php include 'db.php'; ?>
 
 
         <!--   Materialize Forms       -->
