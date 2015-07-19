@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<button class="btn btn-primary" onClick="estimate();">Calcular</button>
+
+
+
+<form name="form" id="form" autocomplete="off" onSubmit="return false;" >
+    <input type="hidden" name="partida" id="p" value="0">
+
+
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 400px; margin-left: -200px;">
+        <div class="modal-body">
+            <table cellpadding=0 cellspacing=0>
+                <tr>
+                    <td height=40 width=135 style="padding-right: 10px;" id="td_nombre">
+                        <div align="right">Nombre y Apellido</div>
+                    </td>
+                    <td>
+                        <div class="control-group" id="div_nombre" style="margin: 0;"><input type="text" name="nombre" id="nombre" class="myModal" /></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td height=40 style="padding-right: 10px;" id="td_email">
+                        <div align="right">Correo Electrónico</div>
+                    </td>
+                    <td>
+                        <div class="control-group" id="div_email" style="margin: 0;"><input type="email" name="email" id="email" class="myModal" /></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <span style="float: left; padding-top: 6px; color: #bd0000;" id="resultado"></span>
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+            <button class="btn btn-primary" onClick="sendMail(); return false;">Enviar Correo</button>
+        </div>
+    </div>
+
+
+    <table cellpadding="0" cellspacing="0" width=100%>
+        <tr>
+            <td colspan=3><div align="center"><h2>CALCULADORA DE COSTOS</h2></div></td>
+        </tr>
+        <tr>
+            <td><div align="center">Si desea cotizar un producto que no se encuentra en la lista, sirvase contactar a nuestro personal de Servicio al Cliente</div></td>
+        </tr>
+        <tr>
+            <td style="padding-top: 10px;">
+                <table cellpadding=0 cellspacing=0 width=100% style="border: 1px solid #ddd;">
+                    <tr valign="top">
+                        <td style="padding-top: 20px;">
+                            <table cellpadding=0 cellspacing=0 width=100%>
+                                <tr>
+                                    <td valign="top">
+
+                                        <table cellpadding=0 cellspacing=0 align="center">
+                                            <tr>
+                                                <td height=30 style="padding-right: 15px; text-align: right;" id="td_articulo">Artículo</td>
+                                                <td>
+                                                    <div class="control-group" id="div_articulo"><input type="text" id="autocomplete" style="width: 300px;" placeholder="detalle del artículo"></div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height=30 style="padding-right: 15px; text-align: right;" id="td_valor">Valor de Factura</td>
+                                                <td>
+                                                    <table cellpadding=0 cellspacing=0>
+                                                        <tr>
+                                                            <td><div class="control-group" id="div_valor"><input type="text" name="valor" style="width:40px" maxlength=7 onKeyPress="return keystroke(event,'0123456789.')"></div></td>
+                                                            <td style="padding-left: 8px;" class="smaller">US$</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td height=30 style="padding-right: 15px; text-align: right;" id="td_peso">Peso</td>
+                                                <td>
+                                                    <table cellpadding=0 cellspacing=0>
+                                                        <tr>
+                                                            <td><div class="control-group" id="div_peso"><input type="text" name="peso" id="peso" style="width:40px" maxlength=5 onBlur="checkPeso();" onKeyPress="return keystroke(event,'0123456789.')"></div></td>
+                                                            <td style="padding-left: 10px;"><input type="checkbox" name="unidad" id="lb" value="LB" class="radio" checked></td>
+                                                            <td style="padding-left: 5px;" class="smaller">libras</td>
+                                                            <td style="padding-left: 5px;"><input type="checkbox" name="unidad" id="kg" value="KG" class="radio"></td>
+                                                            <td style="padding-left: 5px;" class="smaller">kilos</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+
+                                            <tr class="medidas" style="display: none;">
+                                                <td height=30 style="padding-right: 15px; text-align: right;" id="td_medidas">Medidas</td>
+                                                <td>
+                                                    <table cellpadding=0 cellspacing=0>
+                                                        <tr>
+                                                            <td><div class="control-group" id="div_medidas"><input type="text" name="largo" style="width:40px" placeholder="largo" maxlength=5 onKeyPress="return keystroke(event,'0123456789.')"></div></td>
+                                                            <td style="padding-left: 5px;"><input type="text" name="ancho" style="width:40px" placeholder="ancho" maxlength=5 onKeyPress="return keystroke(event,'0123456789.')"></td>
+                                                            <td style="padding-left: 5px;"><input type="text" name="alto" style="width:40px" placeholder="alto" maxlength=5 onKeyPress="return keystroke(event,'0123456789.')"></td>
+                                                            <td style="padding-left: 10px;"><input type="checkbox" name="medida" value="IN" class="radio" checked></td>
+                                                            <td style="padding-left: 5px;" class="smaller">pulgadas</td>
+                                                            <td style="padding-left: 5px;"><input type="checkbox" name="medida" value="CM" class="radio"></td>
+                                                            <td style="padding-left: 5px;" class="smaller">centímetros</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+
+                                            <tr><td height=10></td></tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <button class="btn btn-primary" onClick="estimate();">Calcular</button>
+
+                                                    <img src="/admin/images/facebook.gif" id="ajax" style="display: none; margin-left: 5px;">
+                                                    <button class="btn" id="desglose" style="display: none;" onClick="$('#myModal').modal('show');">Enviar Desglose</button>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-bottom: 20px;">
+                            <div id="estimado" style="display: none;"></div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td height=20><img src="/images/shadow.png" width=910 height=20></td>
+        </tr>
+
+    </table>
+</form>
+
+
+<script type="text/javascript">
+    $('input.radio:checkbox').click(function(){
+        var group = "input:checkbox[name='"+$(this).prop("name")+"']";
+        $(group).prop('checked',false);
+        $(this).prop('checked',true);
+        if ( $(this).prop("name") == 'unidad') checkPeso();
+    });
+    $('#autocomplete').typeahead({
+        source: function (query, process) {
+            states = [];
+            map = {};
+            var data = [
+
+                {"stateCode": "49", "stateName": "A/C todo sistema separados-split (29.95%)"},
+                {"stateCode": "48", "stateName": "A/C un cuerpo pared o ventana (75.04%)"},
+                {"stateCode": "138", "stateName": "Abanico p/ computadora (24.30%)"},
+                {"stateCode": "38", "stateName": "Abrelata, destapador y similar (24.30%)"},
+                {"stateCode": "221", "stateName": "Accesorio p/ videojuegos (55.71%)"},
+
+                {"stateCode": "426", "stateName": "Zapatos tenis de textil (29.95%)"}
+            ];
+            $.each(data, function (i, state) {
+                map[state.stateName] = state;
+                states.push(state.stateName);
+            });
+            process(states);
+        },
+        matcher: function (item) {
+            if (item.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
+                return true;
+            }
+        },
+        sorter: function (items) {
+            return items.sort();
+        },
+        highlighter: function (item) {
+            var regex = new RegExp( '(' + this.query + ')', 'gi' );
+            return item.replace( regex, "<strong>$1</strong>" );
+        },
+        updater: function (item) {
+            selectedState = map[item].stateCode;
+            $('#p').val(selectedState);
+            return item;
+        }
+    });
+    function estimate() {
+        $('#desglose').hide();
+        $('#ajax').show();
+        $('#estimado').slideUp( function() {
+            $.post('calculadora.cfm', $('#form').serialize(), function(data) { $('#ajax').hide(); $('#estimado').html(data); });
+        });
+    }
+
+    function sendMail() {
+        $.post('/calculadora.cfm?envio', $('#form').serialize(), function(data) { $('#results').html(data); });
+    }
+
+    function checkPeso(p) {
+        var p = $('#peso').val();
+        if ($('#lb').prop('checked')) p = eval(p/2.2046);
+        if (p >= 4) $('.medidas').show();
+        else $('.medidas').hide();
+    }
+
+    $('#myModal').on('show', function () {
+        $('.myModal').val('');
+    });
+
+    $('#myModal').on('shown', function () {
+        document.envio.correo.focus();
+    });
+
+</script>
+
+
+
+
+
+</body>
+</html>

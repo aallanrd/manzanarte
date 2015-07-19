@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
+    <title></title>
+    <!-- Favicons-->
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+    <!--  Android 5 Chrome Color-->
+    <meta name="theme-color" content="#EE6E73">
+    <!-- CSS-->
+    <link href="css/prism.css" rel="stylesheet">
+    <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <link rel="stylesheet" href="css/jquery.auto-complete.css">
+
+    <script src="//cdn.transifex.com/live.js"></script>
+  </head>
+  <body class="parallax-demo" onload="exc()"><header>
+      <nav>
+          <div class="nav-wrapper">
+              <a href="index.html" class="brand-logo" style="margin-left: 150px"> Calcularte </a>
+              <ul class="right hide-on-med-and-down">
+                  <li><a href="opciones.html"><i class="material-icons left"></i>Calculadora</a></li>
+                  <li><a href="contacto.html"><i class="material-icons right">view_module</i>Contacto</a></li>
+              </ul>
+          </div>
+      </nav>
+</header>
+
+<main>
+<!--  Parallax Section  -->
+
+    <div class="section white" >
+        <div style="margin-left: 105px; margin-right: 800px">
+        <h2 class="header" >Buscar</h2> <div class="input-field col s6">
+        <i class="material-icons prefix">search</i>
+
+
+              <input id="hero-demo" autofocus type="text" name="q" placeholder="Busqueda Productos..." style="width:100%;max-width:600px;outline:0">
+
+
+
+
+            <p class="grey-text text-darken-3 lighten-3"> Probando Calculo Costos</p>
+        </div>
+    </div>
+
+    </div>
+    <!-- Seccion Blanca Para Hacer lo que quiera -->
+
+  <div class="section white">
+    <div class="row container">
+      <h2 class="header">Calculadora</h2>
+      <p class="grey-text text-darken-3 lighten-3"> Probando Calculo Costos / Solo números</p>
+    </div>
+  </div>
+    <!------------- Termina Seccion -------------->
+
+
+    <div style="margin-left: 105px; margin-right: 300px">
+    <table >
+       <tr>
+
+         <td>
+             <div class="input-field ">
+
+                 <i class="material-icons prefix">aspect_ratio</i>
+                 <input style="margin-left: 50px" type="number" id="icon_prefix1" maxlength="70" name="txt_name"  onkeypress="return isNumberKey(event)">
+                 <label for="icon_prefix2">Valor de Factura</label>
+             </div>
+         </td>
+
+         <td>
+             <div class="input-field ">
+                 <i class="material-icons prefix">library_add</i>
+                 <input style="margin-left: 50px" type="number" id="icon_prefix2" maxlength="70" name="txt_name"  onkeypress="return isNumberKey(event)">
+                 <label for="icon_prefix3">Peso Producto</label>
+             </div>
+
+          </td>
+
+
+
+           <td>
+
+
+           </td>
+
+        </tr>
+
+
+
+       <!-- <tr>                                                    </tr> -->
+
+        <tr>
+
+            <td>
+                <div class="input-field ">
+
+                    <i class="material-icons prefix">aspect_ratio</i>
+                    <input style="margin-left: 50px" type="number" id="icon_prefix3" maxlength="70" name="txt_name"  onkeypress="return isNumberKey(event)">
+                    <label for="icon_prefix2">Largo</label>
+                </div>
+            </td>
+
+            <td>
+                <div class="input-field ">
+                    <i class="material-icons prefix">library_add</i>
+                    <input style="margin-left: 50px" type="number" id="icon_prefix4" maxlength="70" name="txt_name"  onkeypress="return isNumberKey(event)">
+                    <label for="icon_prefix3">Alto</label>
+                </div>
+
+            </td>
+
+
+
+            <td>
+                <div class="input-field ">
+                    <i class="material-icons prefix">library_add</i>
+                    <input style="margin-left: 50px" type="number" id="icon_prefix5" maxlength="70" name="txt_name"  onkeypress="return isNumberKey(event)">
+                    <label for="icon_prefix3">Ancho</label>
+                </div>
+
+            </td>
+            <td>
+                <a class="btn-floating btn-large waves-effect waves-light red" STYLE="margin-left: 55px" onclick="calculate()"><i class="material-icons">offline_pin</i> </a>
+            </td>
+        </tr>
+
+    </table>
+    </div>
+
+
+    <!-- Seccion Blanca Para Hacer lo que quiera -->
+    <div class="section white">
+        <div class="row container">
+            <div class="card-move-up teal waves-effect waves-block waves-light" style=" height: 200px ; margin-right: 600px">
+                <h5 class="white-text text-darken-3 lighten-3" style="text-align: center">Aqui veras tu calculo</h5>
+                <p class="white-text text-darken-3 lighten-3" style="text-align: center"> El calculo es de: </p>
+
+                <h3 id = "calc" class="white-text text-darken-3 lighten-3" style="text-align: center">$ 275</h3>
+            </div>
+        </div>
+
+    </div>
+    <!------------- Termina Seccion -------------->
+
+    <!------- SCRIPPPPTTTSSSSS --------- -->
+
+
+
+
+    <script>
+
+
+
+        function calculate() {
+
+            var vF = document.getElementById("icon_prefix1").value;
+            var pP = document.getElementById("icon_prefix2").value;
+
+            var la = document.getElementById("icon_prefix3").value;
+            var al = document.getElementById("icon_prefix4").value;
+            var an = document.getElementById("icon_prefix5").value;
+
+            var e = document.getElementById("select");
+
+
+
+            var calc = la * al * an;
+
+            document.getElementById("calc").innerHTML = ' $ ' + calc + '  USD';
+        };
+
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode != 46 && charCode > 31
+                    && (charCode < 48 || charCode > 57))
+                return false;
+
+            return true;
+        };
+
+        function focusOnElement(element_id) {
+            $('#div_' + element_id).goTo(); // need to 'go to' this element
+        }
+
+    </script>
+
+  <!-- SECCION PARALLAX --- >
+
+
+    <div class="parallax-container">
+        <div class="parallax"><img src="images/apple2.jpg"></div>
+    </div>
+
+  <!--  fIN SECCION PARALLAX --- >
+
+
+    <!--  mAS  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
+    </script>
+    <script src="js/jquery.timeago.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="js/prism.js"></script>
+    <script src="bin/materialize.js"></script>
+    <script src="js/init.js"></script>
+    <!-- Twitter Button -->
+    <script>!function(d,s,id){var js,fjs=d.getElementsByT   agName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <!-- Google Plus Button-->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
+  </body>
+</html>
